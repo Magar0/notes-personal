@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throttling</title>
+    <style>
+        body {
+            height: 200vh;
+            /* overflow-y: scroll; */
+        }
+        div{
+            position: fixed;
+        }
+    </style>
+</head>
+
+<body onscroll="count()">
+
+    <div>
+        <p class="n-count">Normal Count</p>
+        <p class="t-count">Throttle Count</p>
+    </div>
+
+
+    <script>
+
+        const n_div = document.querySelector('.n-count')
+        const t_div = document.querySelector('.t-count')
+
+        let n_num = 0;
+        const nCount = () => {
+            n_num++;
+            n_div.innerHTML = `Normal Cont ${n_num} `
+        }
+        
+        let t_num=0;
+        let isScrolling= true;
+        
+        const tCount =()=>{
+           if(isScrolling){
+               t_num++;
+               t_div.innerHTML = `Throttle Cont ${t_num} `
+               isScrolling = false;
+               setTimeout(()=>{
+                isScrolling=true}
+                ,1000)
+           }
+
+        }
+
+        const count = () => {
+            nCount();
+            tCount();
+        }
+
+    </script>
+
+</body>
+
+</html>

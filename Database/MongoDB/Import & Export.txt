@@ -1,0 +1,7 @@
+mongodump --uri="mongodb://localhost:27017/sampledb" --collection=movies
+
+mongorestore --uri="mongodb://localhost:27017" --nsInclude=sampledb.movies .\dump\sampledb\movies.bson
+
+//for JSON format
+mongoexport --uri="mongodb://localhost:27017/sampledb" --collection=movies --out=movies.json
+mongoimport --uri="mongodb://localhost:27017/sampledb" --collection=movies --file="movies.json"

@@ -1,0 +1,30 @@
+$dark: black;
+$light: rgb(151, 242, 246);
+
+@mixin text($col, $space , $case:capitalize){  //added default parameter
+    color: $col;
+    font-size: 2rem+3rem;
+    letter-spacing: $space;
+    padding: 2rem;
+    text-transform: $case;
+}
+
+.main-header{
+    h1{
+        @include text(red, 1.5rem,uppercase);
+
+        &:hover{
+            color: $dark;
+            background-color: $light;
+        }
+    }
+
+    p{
+        @include text(green , 0.4rem );
+        &:hover{
+            color:$dark;
+            background-color: $light;
+        }
+    }
+
+}

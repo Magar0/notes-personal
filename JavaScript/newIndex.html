@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            background-color: aqua;
+            padding: 30vh 0px;
+            display: grid;
+            justify-content: center;
+        }
+        
+    </style>
+
+</head>
+<body>
+    
+    <div class="main">
+        <div class="box1">
+            <label for="name">Enter Your Name</label>
+            <input type="text" class="text-box" id="input">
+        </div>
+        <div class="box2">
+            <label for="ice">Choose Your ice cream flavour</label> 
+            <select name="ice-cream" id="flavour">
+                <option value="">Select</option>
+                <option value="vanilla">Vanilla</option>
+                <option value="milk">Milky</option>
+                <option value="butter">Butter</option>
+            </select>
+        </div>
+        <div>
+            <p class="result"></p>
+        </div>
+
+
+    </div>
+
+    <script>
+        flavour.addEventListener('change', ()=> {
+            const name = document.getElementById("input").value;
+            const flavour = document.querySelector("#flavour").value;
+            const result = document.querySelector(".result");
+            result.innerHTML = `${name} has selected ${flavour} ice cream`;
+        })
+    </script>
+</body>
+</html>

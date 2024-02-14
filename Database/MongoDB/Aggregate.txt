@@ -1,0 +1,75 @@
+//stage aggregate
+
+db.sales.aggregate([{$match:{purchaseMethod: "Online"}}])
+db.sales.aggregate([{$match:{purchaseMethod: "Online"}},{$count:"thapa total"}])
+ db.sales.aggregate([{ $match: { purchaseMethod: "Online" } }, { $limit: 1 }])
+
+db.sales.aggregate([{$match:{purchaseMethod:"Online"}},{$project:{storeLocation:1, "customer.gender":1,_id:0}},{$limit:5}])
+db.sales.aggregate([{$match:{purchaseMethod:"Online"}},{$project:{storeLocation:1, "customer.gender":1,_id:0}},{$count:"customTotal"}])
+
+
+
+//group
+
+db.sales.aggregate([
+{$group:{_id:"$purchaseMethod"}}
+])
+
+db.sales.aggregate([ 
+{ $group: { _id: "$purchaseMethod" , ThapaTotal: {$count:{}} }}
+] )
+
+
+db.sales.aggregate([
+{$group:{_id: { thapaMethod:"$purchaseMethod", thapaLocation: "$storeLocation" } }}
+])
+
+
+
+
+//grouping then sorting
+db.sales.aggregate([
+{$group:{_id: { thapaMethod:"$purchaseMethod", thapaLocation: "$storeLocation" } }},
+{$sort:{"_id.thapaMethod":1}}
+]) 
+
+
+
+
+//grouping then total count
+db.sales.aggregate([
+{$group:{_id:{ thapaMethod: "$purchaseMethod", thapaLocation: "$storeLocation"}, thapaTotal: {$count:{}}}
+}])
+
+db.sales.aggregate([
+{$group:{_id:{ thapaMethod: "$purchaseMethod", thapaLocation: "$storeLocation"}, thapaTotal: {$count:{}}}},
+{$sort:{'_id.thapaMethod':1}}
+])
+
+
+db.sales.aggregate([
+{$group:{_id:{ thapaMethod: "$purchaseMethod", thapaLocation: "$storeLocation"}, thapaTotal: {$count:{}}, ThapaCustmrEmail : {$push: "$customer.email" }}},
+{$sort:{'_id.thapaMethod':1}}
+])
+
+
+
+
+
+
+// now with salaries data
+
+db.salaries.aggregate([
+{$group:{_id:{thapaYear: "$fiscal_year", thapaSalary: "$salary" }}}
+])
+
+db.salaries.aggregate([
+{$group:{_id:{thapaYear: "$fiscal_year", thapaSalary: "$salary"}, ThapaName: {$push: "$name" }}},
+{$sort:{ "_id.thapaYear":1 }}])
+
+
+
+// MONGO DUMP................
+mongodump --uri="mongodb://localhost:27017/sampledb" --collection="movies"
+
+

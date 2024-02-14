@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debouncing</title>
+    <style>
+        p{
+            margin:50px;
+            font-size: 3rem;
+        }
+
+        input{
+            font-size: 2rem;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="text" class="input">
+    <p id="show"></p>
+
+
+    <script>
+
+
+// object......
+const obj = {names: "sita",
+            age:78,
+            sub: "Hindi"
+}
+
+        const input = document.querySelector('.input')
+
+
+        const debounce = (func, timeout) => {
+
+            let timer;
+            return (...args) => {
+                clearTimeout(timer);
+
+                timer = setTimeout(() => {
+                    // func.apply(this,args)
+                    func(args)
+                }, timeout)
+            }
+        }
+
+        const getUser = (query) => {
+            // console.log(query);
+            show.innerHTML = query;
+        }
+
+        const debounceGetData = debounce(getUser, 500)
+
+        input.addEventListener('keyup', (event) => {
+            debounceGetData(event.target.value);
+        })
+    </script>
+
+</body>
+
+</html>

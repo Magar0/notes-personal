@@ -1,0 +1,35 @@
+mongosh // to enter mongo shell
+
+show databases
+use sampledb
+db.movies.find({}).count()
+
+// cursor "it" it helps to see more data
+
+//pagination............
+db.movies.find({},{title:1,year:1,_id:0}).limit(10)
+db.movies.find({},{title:1,year:1,_id:0}).skip(6).limit(3)
+
+
+
+//Index...........
+db.movies.getIndexes()
+db.movies.find({year:1955}).count()
+db.movies.find({year:1955}).explain()
+db.movies.find({year:1955}).explain('executionStats')
+db.movies.createIndex({year:1})
+db.movies.find({year:1955, 'awards.wins':2 }).explain('executionStats')
+
+//compound Index..........
+db.movies.createIndex({year:1,rated:1})
+db.movies.find({year:1955,rated:"UNRATED"}).explain("executionStats")
+db.movies.dropIndex('year_1_rated_1')
+
+
+//multi key index...............
+db.movies.createIndex({genres:1})         //here Genres is an array
+db.movies.find({genres:'Animation'}).explain('executionStats')
+
+//index for Nested document
+db.movies.createIndex({'imdb.rating':1})
+db.movies.find({'imdb.rating':5}).explain('executionStats')

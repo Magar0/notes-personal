@@ -1,0 +1,37 @@
+@import "text";
+
+// 1.Operators...........
+// 2.Variables...........
+// 3.Nesting...........
+// 4.Mixin................
+// 5.parameters...........
+// 6.partials............
+
+
+$bg-color: rgb(255, 217, 223);
+
+@mixin flex-center($dir){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $dir;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 66.66%;
+}
+
+
+.main-header{
+    height: 100vh;
+    @include flex-center(column);
+    background-color: $bg-color;
+
+    
+}

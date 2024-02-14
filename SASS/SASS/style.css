@@ -1,0 +1,41 @@
+.main-header h1 {
+  color: red;
+  font-size: 5rem;
+  letter-spacing: 1.5rem;
+  padding: 2rem;
+  text-transform: uppercase;
+}
+.main-header h1:hover {
+  color: black;
+  background-color: rgb(151, 242, 246);
+}
+.main-header p {
+  color: green;
+  font-size: 5rem;
+  letter-spacing: 0.4rem;
+  padding: 2rem;
+  text-transform: capitalize;
+}
+.main-header p:hover {
+  color: black;
+  background-color: rgb(151, 242, 246);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 66.66%;
+}
+
+.main-header {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(255, 217, 223);
+}/*# sourceMappingURL=style.css.map */

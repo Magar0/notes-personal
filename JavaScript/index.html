@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main {
+            display: inline-block;
+            justify-content: center;
+        }
+
+        .smlbx {
+            margin: 100px;
+            height: 50px;
+            /* width: 200px; */
+            background-color: aqua;
+
+        }
+
+        .btn_txt_contnr {
+            font-size: larger;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="smlbx">
+            <a href="#" class="btn1" onclick="alert('Hello first way of writing function')">
+                <span class="btn_txt_contnr">
+                    Simple Alert function
+                </span>
+            </a>
+            <div class="smlbx">
+                <a href="#" class="btn1" onclick="callingFunction()">
+                    <span class="btn_txt_contnr">
+                        second calling function
+                    </span>
+                </a>
+                <div class="smlbx">
+                    <a href="#" class="btn1" id="3rdWay">
+                        <span class="btn_txt_contnr">
+                            3rd Way to call inline function
+                        </span>
+                    </a>
+                    <div class="smlbx">
+                        <a href="#" class="btn1" id="fourthWay">
+                            <span class="btn_txt_contnr">
+                                Fourth Way to Call Event
+                            </span>
+                        </a>
+                    </div>
+
+
+
+                </div>
+                <script>
+                    const callingFunction = () => alert("this the seconnd Callingfunction")   //2nd way
+
+                    const thirdWay = document.getElementById("3rdWay")               //3rd way
+                    thirdWay.onclick = function () {
+                        alert("3rd way to call function")
+                    }
+
+                    const fourthWay = document.querySelector("#fourthWay")
+                    fourthWay.addEventListener('click', () => alert("fourth way to call event"))
+
+
+                    let str = " Good Boy";
+                    let newStr = str.padStart(20)
+                    console.log(str);
+                    console.log(newStr);
+
+                    // let colors = ["red", "orange", "pink", "blue", "yellow", "green"]
+                    let colors = ["vilot", "indigo", "blue", "green", "yellow", "orange", "red"]
+                    //     let colorRandom = () =>{         //using loop
+                    //         let random;
+                    //         do{
+                    //         random= colors.random
+                    //     } while(random>5);
+
+                    //     document.body.style.backgroundColor = colors[random];
+                    // }
+
+                    let colorRandom = () => {
+                        const random = Math.floor(Math.random() * colors.length);
+                        document.body.style.backgroundColor = colors[random];
+                    }
+                    setInterval(colorRandom, 1000)
+                </script>
+
+                <!-- <script src="myNotes.js"></script> -->
+</body>
+
+
+
+</html>
